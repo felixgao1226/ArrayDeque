@@ -85,6 +85,6 @@ public class ArrayDeque61BTest {
 //        for(int i = 1; i < 100; i ++){
 //            ad1.removeFirst();
 //            assertThat(ad1.size()).isEqualTo(100 - i);
-        }
+//        }
     }
 }
