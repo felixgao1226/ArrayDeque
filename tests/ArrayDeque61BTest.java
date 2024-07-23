@@ -68,28 +68,28 @@ public class ArrayDeque61BTest {
         assertThat(ad1.isEmpty()).isEqualTo(false);
 
         // test cases will pass after implemented removeFirst() and removeLast()
-//        ad1.removeFirst();
-//        assertThat(ad1.isEmpty()).isEqualTo(true);
-//        ad1.addLast(1);
-//        assertThat(ad1.isEmpty()).isEqualTo(false);
-//        ad1.removeLast();
-//        assertThat(ad1.isEmpty()).isEqualTo(true);
+        ad1.removeFirst();
+        assertThat(ad1.isEmpty()).isEqualTo(true);
+        ad1.addLast(1);
+        assertThat(ad1.isEmpty()).isEqualTo(false);
+        ad1.removeLast();
+        assertThat(ad1.isEmpty()).isEqualTo(true);
     }
 
     @Test
     void sizeTestBasic(){
         Deque61B<Integer> ad1 = new ArrayDeque61B<>();
         assertThat(ad1.size()).isEqualTo(0);
-        for(int i = 1; i < 100; i++) {
+        for(int i = 1; i <= 100; i++) {
             ad1.addFirst(i);
             assertThat(ad1.size()).isEqualTo(i);
         }
 
         // test case will pass after implemented removeFirst() and removeLast()
-//        for(int i = 1; i < 100; i ++){
-//            ad1.removeFirst();
-//            assertThat(ad1.size()).isEqualTo(100 - i);
-//        }
+        for(int i = 1; i <= 100; i ++){
+            ad1.removeFirst();
+            assertThat(ad1.size()).isEqualTo(100 - i);
+        }
     }
 
     @Test
