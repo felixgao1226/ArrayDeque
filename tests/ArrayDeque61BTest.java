@@ -17,7 +17,8 @@ public class ArrayDeque61BTest {
         ad1.addFirst(7);
         ad1.addFirst(6);
         ad1.addFirst(5);
-//        ad1.addFirst(15);
+        ad1.addFirst(5);
+        assertThat(ad1.size()).isEqualTo(9);
     }
 
     @Test
@@ -31,8 +32,8 @@ public class ArrayDeque61BTest {
         ad1.addLast(2);
         ad1.addLast(3);
         ad1.addLast(4);
-//        ad1.addLast(8);
-
+        ad1.addLast(8);
+        assertThat(ad1.size()).isEqualTo(9);
     }
 
     @Test

@@ -53,14 +53,13 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
 
     private void resize(){
         // creat a new array
-        T[] resizedArray = (T[]) new Array[RESIZEFACTOR * items.length];
+        T[] resizedArray = (T[]) new Object[RESIZEFACTOR * items.length];
         for(int i = 0; i < items.length; i++){
             resizedArray[i] = get(i);
         }
         items = resizedArray;
         nextFirst = items.length - 1;
         nextLast = size;
-
     }
 
     @Override
