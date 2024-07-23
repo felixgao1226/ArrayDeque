@@ -41,7 +41,7 @@ public class ArrayDeque61BTest {
         //add first
         for (int i = 0; i < 8; i++) {
             ad1.addFirst(i);
-            assertThat(ad1.get(i)).isEqualTo(8 - i);
+            assertThat(ad1.get(0)).isEqualTo(i);
         }
     }
 
@@ -52,7 +52,6 @@ public class ArrayDeque61BTest {
         for (int i = 0; i < 8; i++) {
             ad1.addLast(i);
             assertThat(ad1.get(i)).isEqualTo(i);
-
         }
     }
 }
