@@ -1,5 +1,9 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
@@ -87,4 +91,24 @@ public class ArrayDeque61BTest {
 //            assertThat(ad1.size()).isEqualTo(100 - i);
 //        }
     }
+
+    @Test
+    void toListTestBasic(){
+        Deque61B<String> ad1 = new ArrayDeque61B<>();
+        ad1.addLast("a");
+        ad1.addLast("b");
+        ad1.addFirst("c");
+        ad1.addLast("d");
+        ad1.addLast("e");
+        ad1.addFirst("f");
+        ad1.addLast("g");
+        ad1.addLast("h");
+        List<String> lst = Arrays.asList("f", "c", "a", "b", "d", "e", "g", "h");
+        assertThat(ad1.toList()).isEqualTo(lst);
+    }
+
+
+
+
+
 }

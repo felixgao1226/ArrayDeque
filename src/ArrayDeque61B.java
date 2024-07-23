@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ArrayDeque61B<T> implements Deque61B<T>{
@@ -56,12 +57,16 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
 
     @Override
     public List<T> toList() {
-        return List.of();
+        List<T> lst = new LinkedList<>();
+        for (int i = 0; i < size(); i++) {
+            lst.add(get(i));
+        }
+        return lst;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size() == 0;
     }
 
     @Override
