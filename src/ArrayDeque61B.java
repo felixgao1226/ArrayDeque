@@ -24,11 +24,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
         if (size < items.length){
             items[nextFirst] = x;
             size += 1;
-            if (nextFirst == 0){
-                nextFirst = items.length - 1;
-            }else {
-                nextFirst -= 1;
-            }
+            nextFirst = Math.floorMod(nextFirst - 1, items.length);
         }else{
             resize();
             addFirst(x);
@@ -40,11 +36,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
         if (size < items.length){
             items[nextLast] = x;
             size += 1;
-            if (nextLast == items.length - 1){
-                nextLast = 0;
-            }else{
-                nextLast += 1;
-            }
+            nextLast = Math.floorMod(nextLast + 1, items.length);
         }else{
             resize();
             addLast(x);
