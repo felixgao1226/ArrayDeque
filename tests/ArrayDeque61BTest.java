@@ -10,7 +10,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 public class ArrayDeque61BTest {
 
     @Test
-    void addFirstTestWithoutResize() {
+    void addFirstTestWithoutResizeUp() {
         Deque61B<Integer> ad1 = new ArrayDeque61B<>();
         //add 3 items to the list
         ad1.addFirst(4);
@@ -26,7 +26,7 @@ public class ArrayDeque61BTest {
     }
 
     @Test
-    void addLastTestWithoutResize() {
+    void addLastTestWithoutResizeUp() {
         Deque61B<Integer> ad1 = new ArrayDeque61B<>();
         ad1.addLast(5);
         ad1.addLast(6);
@@ -107,8 +107,31 @@ public class ArrayDeque61BTest {
         assertThat(ad1.toList()).isEqualTo(lst);
     }
 
+    @Test
+    void resizeDownTest() {
+        ArrayDeque61B<Object> ad1 = new ArrayDeque61B<>();
+        assertThat(ad1.size()).isEqualTo(0);
+        // add 100 items to the array
+        for (int i = 1; i <= 100; i++) {
+            ad1.addFirst(i);
+        }
 
+        // remove 70 items from the array
+        assertThat(ad1.size()).isEqualTo(100);
+        for (int i = 1; i <= 70; i++) {
+            ad1.removeFirst();
+        }
+        assertThat(ad1.size()).isEqualTo(30);
+        assert((double) ad1.size() / ad1.items.length > 0.25);
 
+        // remove 20 items from the array
+        for (int i = 1; i <= 20; i++) {
+            ad1.removeFirst();
+        }
+        assertThat(ad1.size()).isEqualTo(10);
 
+        //assert that the array resize down by comparing the usage to the usage factor (0.25)
+        assert((double) ad1.size() / ad1.items.length > 0.25);
 
+    }
 }
