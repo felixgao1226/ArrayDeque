@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class ArrayDeque61B<T> implements Deque61B<T>{
+public class ArrayDeque61B<T> implements Deque61B<T> {
 
     private static final int DEFAULTFIRST = 4;
     private static final int DEFAULTLAST = 5;
@@ -13,7 +13,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
     public int nextFirst;
     public int nextLast;
 
-    public ArrayDeque61B(){
+    public ArrayDeque61B() {
         items = (T[]) new Object[DEFAULTARRAYSIZE];
         size = 0;
         nextFirst = DEFAULTFIRST;
@@ -22,11 +22,11 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
 
     @Override
     public void addFirst(T x) {
-        if (size < items.length){
+        if (size < items.length) {
             items[nextFirst] = x;
             size += 1;
             nextFirst = Math.floorMod(nextFirst - 1, items.length);
-        }else{
+        } else {
             resizeUp();
             addFirst(x);
         }
@@ -34,20 +34,20 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
 
     @Override
     public void addLast(T x) {
-        if (size < items.length){
+        if (size < items.length) {
             items[nextLast] = x;
             size += 1;
             nextLast = Math.floorMod(nextLast + 1, items.length);
-        }else{
+        } else {
             resizeUp();
             addLast(x);
         }
     }
 
-    private void resizeUp(){
+    private void resizeUp() {
         // creat a new array
         T[] resizedArray = (T[]) new Object[RESIZEFACTOR * items.length];
-        for(int i = 0; i < items.length; i++){
+        for (int i = 0; i < items.length; i++) {
             resizedArray[i] = get(i);
         }
         items = resizedArray;
@@ -74,9 +74,9 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
         return size;
     }
 
-    private void resizeDown(){
+    private void resizeDown() {
         T[] resizedArray = (T[]) new Object[size() * RESIZEFACTOR];
-        for (int i = 0; i < size(); i ++) {
+        for (int i = 0; i < size(); i++) {
             resizedArray[i] = get(i);
         }
         items = resizedArray;
@@ -87,7 +87,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
     @Override
     public T removeFirst() {
         float usage = (float) size() / items.length;
-        if (items.length >= 16 && usage < USAGEFACTOR){
+        if (items.length >= 16 && usage < USAGEFACTOR) {
             resizeDown();
         }
         size -= 1;
@@ -100,7 +100,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
     @Override
     public T removeLast() {
         float usage = (float) size() / items.length;
-        if (items.length >= 16 && usage < USAGEFACTOR){
+        if (items.length >= 16 && usage < USAGEFACTOR) {
             resizeDown();
         }
         size -= 1;
@@ -115,13 +115,14 @@ public class ArrayDeque61B<T> implements Deque61B<T>{
         if (index < 0 || index > size()) {
             return null;
         } else {
-                int i = Math.floorMod(nextFirst + 1 + index, items.length);
-                return items[i];
+            int i = Math.floorMod(nextFirst + 1 + index, items.length);
+            return items[i];
         }
     }
 
     @Override
     public T getRecursive(int index) {
-        return null;
+        throw new UnsupportedOperationException("No need to implement getRecursive for proj 1b");
     }
 }
+
